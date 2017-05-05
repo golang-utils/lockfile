@@ -1,0 +1,19 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "eXHTkU5A7nVRyKyCGdPX4btNA4g=",
+			"path": "github.com/golang-interfaces/vos",
+			"revision": "04338253a0e5d04cb37f95663685ccea6bc77930",
+			"revisionTime": "2017-05-05T19:56:45Z"
+		},
+		{
+			"checksumSHA1": "dSxM+ays0+ey1rWkIkRqxbt78oc=",
+			"path": "github.com/golang-utils/pscanary",
+			"revision": "e41980661aade8ffc5597243782b31bbda70b203",
+			"revisionTime": "2017-05-05T20:50:52Z"
+		}
+	],
+	"rootPath": "github.com/golang-utils/lockfile"
+}
