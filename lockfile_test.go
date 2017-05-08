@@ -3,7 +3,7 @@ package lockfile
 import (
 	"errors"
 	"fmt"
-	"github.com/golang-interfaces/vos"
+	"github.com/golang-interfaces/ios"
 	"github.com/golang-utils/pscanary"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
@@ -27,7 +27,7 @@ var _ = Context("lockfile", func() {
 			expectedPath := path.Dir(providedFilePath)
 			expectedPerms := os.FileMode(0700)
 
-			fakeOS := new(vos.Fake)
+			fakeOS := new(ios.Fake)
 
 			objectUnderTest := lockfile{
 				os:       fakeOS,
@@ -48,7 +48,7 @@ var _ = Context("lockfile", func() {
 				providedFilePath := "/dummy/pid.lock"
 				expectedErr := errors.New("dummyError")
 
-				fakeOS := new(vos.Fake)
+				fakeOS := new(ios.Fake)
 				fakeOS.MkdirAllReturns(expectedErr)
 
 				objectUnderTest := lockfile{
@@ -67,7 +67,7 @@ var _ = Context("lockfile", func() {
 				/* arrange */
 				providedFilePath := "/dummy/pid.lock"
 
-				fakeOS := new(vos.Fake)
+				fakeOS := new(ios.Fake)
 
 				objectUnderTest := lockfile{
 					os:       fakeOS,
@@ -85,7 +85,7 @@ var _ = Context("lockfile", func() {
 					/* arrange */
 					providedFilePath := "/dummy/pid.lock"
 
-					fakeOS := new(vos.Fake)
+					fakeOS := new(ios.Fake)
 					fakeOS.OpenReturns(nil, errors.New("dummyError"))
 
 					objectUnderTest := lockfile{
@@ -107,7 +107,7 @@ var _ = Context("lockfile", func() {
 						/* arrange */
 						providedFilePath := "/dummy/pid.lock"
 
-						fakeOS := new(vos.Fake)
+						fakeOS := new(ios.Fake)
 
 						objectUnderTest := lockfile{
 							os:       fakeOS,
@@ -127,7 +127,7 @@ var _ = Context("lockfile", func() {
 							/* arrange */
 							providedFilePath := "/dummy/pid.lock"
 
-							fakeOS := new(vos.Fake)
+							fakeOS := new(ios.Fake)
 
 							fakePsCanary := new(pscanary.Fake)
 							fakePsCanary.IsAliveReturns(false)
@@ -150,7 +150,7 @@ var _ = Context("lockfile", func() {
 							pIdFromFile := 1234
 							expectedErr := fmt.Errorf("Unable to obtain lock; currently owned by PId: %v\n", pIdFromFile)
 
-							fakeOS := new(vos.Fake)
+							fakeOS := new(ios.Fake)
 							// create a real temp file; no good way to stub os.File
 							tempFile, err := ioutil.TempFile("", "lockfile_test")
 							defer tempFile.Close()
